@@ -19,7 +19,7 @@ if [ ! -d "$dir" ]; then
 	# Exit Status: Incorrect usage
 fi
 
-# Выбирает один случайный файл
+# Select one random file
 file=$(ls "$dir" | shuf -n1)
 file=$dir$file
 
