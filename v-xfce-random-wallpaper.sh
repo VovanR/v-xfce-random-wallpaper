@@ -39,7 +39,7 @@ xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s "$file
 # 3 - Stretched
 # 4 - Scaled
 # 5 - Zoomed
-xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-style -s 0
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-style -n -t int -s 0
 
 # Refresh desktop
 xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-show -s false
