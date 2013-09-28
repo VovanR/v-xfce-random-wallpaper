@@ -13,4 +13,4 @@ Cron
 
 For changing wallpaper every 12 hours:
 
-	* */12 * * * DISPLAY=:0.0 ${HOME}/.local/bin/v-xfce-random-wallpaper.sh
+	0 13 * * * DISPLAY=:0.0 ${HOME}/.local/bin/v-xfce-random-wallpaper.sh
