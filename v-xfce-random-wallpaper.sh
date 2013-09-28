@@ -13,17 +13,26 @@ dir=$dirHome"/"$dirWallpapers"/"
 
 # Exit if directory doesn't exist
 if [ ! -d "$dir" ]; then
-    echo -e "Error: Directory \""$dir"\" does not exists"
-    exit 2
+	echo -e "Error: Directory \""$dir"\" does not exists"
+	exit 2
 	# Return 2
 	# Exit Status: Incorrect usage
 fi
 
+
 # Select one random file
 file=$(ls "$dir" | shuf -n1)
-file=$dir$file
+
+# Exit if directory is empty
+if [ -z "$file" ]; then
+	echo -e "Error: Directory \""$dir"\" is empty"
+	exit 2
+	# Return 2
+	# Exit Status: Incorrect usage
+fi
 
 # The full path of the wallpaper file
+file=$dir$file
 echo -e $file
 
 
