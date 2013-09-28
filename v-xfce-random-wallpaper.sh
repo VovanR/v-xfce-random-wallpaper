@@ -1,13 +1,27 @@
 #!/bin/bash
-# v-xfce-random-wallpaper, version 0.9
+# v-xfce-random-wallpaper, version 0.95
 # Random wallpaper for XFCE
 # github.com/VovanR/v-xfce-random-wallpaper
 # Author: VovanR (Vladimir Rodkin)
 # twitter.com/VovanR
 
 
+
+# Settings #
+############
+
 # Wallpaper directory
 dirWallpapers="Dropbox/Wallpapers/dlanham wallpapers/Desktop"
+
+# File extensions
+exts="png jpg jpeg"
+
+
+
+# Logics #
+##########
+
+# Build wallpapers directory path
 dirHome=$(echo $HOME)
 dir=$dirHome"/"$dirWallpapers"/"
 
@@ -20,8 +34,17 @@ if [ ! -d "$dir" ]; then
 fi
 
 
+# Build the RegExp to filter files by extensions
+regexp=''
+for ext in $exts; do
+	regexp=$regexp'^.+(\.'$ext')+$|'
+done
+# Remove last character from string
+regexp=${regexp%?}
+
+
 # Select one random file
-file=$(ls "$dir" | shuf -n1)
+file=$(ls "$dir" | grep -Ei $regexp | shuf -n1)
 
 # Exit if directory is empty
 if [ -z "$file" ]; then
