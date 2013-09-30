@@ -13,6 +13,15 @@
 # Wallpaper directory
 dirWallpapers="Dropbox/Wallpapers/dlanham wallpapers/Desktop"
 
+# Stype
+# 0 - Auto
+# 1 - Centered
+# 2 - Tiled
+# 3 - Stretched
+# 4 - Scaled
+# 5 - Zoomed
+style=0
+
 # File extensions
 exts="png jpg jpeg"
 
@@ -59,19 +68,20 @@ file=$dir$file
 echo -e $file
 
 
+# If the style setting value isn't correct, then replace it with the default value
+if [ $style -lt 0 ] || [ $style -gt 5 ]; then
+    echo -e "Warning: Style value is not correct! Applying default settings"
+    style=0
+fi
+
+
 # Setup wallpaper
 
 # File
 xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s "$file"
 
 # Style
-# 0 - Auto
-# 1 - Centered
-# 2 - Tiled
-# 3 - Stretched
-# 4 - Scaled
-# 5 - Zoomed
-xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-style -n -t int -s 0
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-style -n -t int -s $style
 
 # Refresh desktop
 xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-show -s false
