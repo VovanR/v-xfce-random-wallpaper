@@ -11,6 +11,6 @@ Cron
 
 	$ crontab -e
 
-For changing wallpaper every 12 hours:
+For changing wallpaper every day at 13 o'clock:
 
 	0 13 * * * DISPLAY=:0.0 ${HOME}/.local/bin/v-xfce-random-wallpaper.sh
