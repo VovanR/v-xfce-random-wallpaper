@@ -14,3 +14,7 @@ Cron
 For changing wallpaper every day at 13 o'clock:
 
 	0 13 * * * DISPLAY=:0.0 ${HOME}/.local/bin/v-xfce-random-wallpaper.sh
+
+For changing wallpaper in 2 minutes after reboot
+
+	@reboot sleep 120; DISPLAY=:0.0 ${HOME}/.local/bin/v-xfce-random-wallpaper.sh
