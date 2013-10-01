@@ -86,8 +86,8 @@ echo -e "New wallpaper: "$file
 
 # If the style setting value isn't correct, then replace it with the default value
 if [ $style -lt 0 ] || [ $style -gt 5 ]; then
-    echo -e "Warning: Style value is not correct! Applying default settings"
-    style=0
+	echo -e "Warning: Style value is not correct! Applying default settings"
+	style=0
 fi
 
 
