@@ -8,6 +8,7 @@ Change "dirWallpapers" variable to your wallpapers dir
 
 Cron
 ----
+Read [CronHowto](https://help.ubuntu.com/community/CronHowto)
 
 	$ crontab -e
 
