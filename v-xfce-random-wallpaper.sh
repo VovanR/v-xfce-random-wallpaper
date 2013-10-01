@@ -11,7 +11,10 @@
 ############
 
 # Wallpaper directory
-dirWallpapers="Dropbox/Wallpapers/dlanham wallpapers/Desktop"
+# Note: $(echo $HOME) == /home/user
+# If you run this from another user this path will be different
+# Use absolute path ;)
+dir=$(echo $HOME)"/Dropbox/Wallpapers/dlanham wallpapers/Desktop/"
 
 # Stype
 # 0 - Auto
@@ -29,10 +32,6 @@ exts="png jpg jpeg"
 
 # Logics #
 ##########
-
-# Build wallpapers directory path
-dirHome=$(echo $HOME)
-dir=$dirHome"/"$dirWallpapers"/"
 
 # Exit if directory doesn't exist
 if [ ! -d "$dir" ]; then
