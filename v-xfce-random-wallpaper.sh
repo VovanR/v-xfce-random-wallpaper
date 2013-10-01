@@ -52,20 +52,37 @@ done
 regexp=${regexp%?}
 
 
+# The full path of the current wallpaper file
+fileCurrent=$(xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path)
+echo -e "Current wallpaper: "$fileCurrent
+
+# Parse current file name
+fileNameCurrent=$(echo -e $fileCurrent | sed 's#.*/##')
+
+
 # Select one random file
-file=$(ls "$dir" | grep -Ei $regexp | shuf -n1)
+function getFile(){
+	# Exclude current wallpaper file if it hasn't been changed
+	if [ ! -N "$fileCurrent" ]; then
+		fileName=$(ls "$dir" | grep -Ei $regexp | grep -v "$fileNameCurrent" | shuf -n1)
+	else
+		fileName=$(ls "$dir" | grep -Ei $regexp | shuf -n1)
+	fi
+}
+# First run getFile function
+getFile
 
 # Exit if directory is empty
-if [ -z "$file" ]; then
+if [ -z "$fileName" ]; then
 	echo -e "Error: Directory \""$dir"\" is empty"
 	exit 2
 	# Return 2
 	# Exit Status: Incorrect usage
 fi
 
-# The full path of the wallpaper file
-file=$dir$file
-echo -e $file
+# The full path of the new wallpaper file
+file=$dir$fileName
+echo -e "New wallpaper: "$file
 
 
 # If the style setting value isn't correct, then replace it with the default value
