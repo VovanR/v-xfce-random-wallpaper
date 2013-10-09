@@ -3,7 +3,12 @@ v-xfce-random-wallpaper
 
 Sets the random wallpaper from a folder
 
-Change "dirWallpapers" variable to your wallpapers dir
+![](preview.gif)
+
+
+Setup
+-----
+Change "dir" variable to your wallpapers directory
 
 
 Cron

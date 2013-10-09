@@ -1,5 +1,5 @@
 #!/bin/bash
-# v-xfce-random-wallpaper, version 0.95
+# v-xfce-random-wallpaper, version 1.0
 # Random wallpaper for XFCE
 # github.com/VovanR/v-xfce-random-wallpaper
 # Author: VovanR (Vladimir Rodkin)
@@ -60,16 +60,12 @@ fileNameCurrent=$(echo -e $fileCurrent | sed 's#.*/##')
 
 
 # Select one random file
-function getFile(){
-	# Exclude current wallpaper file if it hasn't been changed
-	if [ ! -N "$fileCurrent" ]; then
-		fileName=$(ls "$dir" | grep -Ei $regexp | grep -v "$fileNameCurrent" | shuf -n1)
-	else
-		fileName=$(ls "$dir" | grep -Ei $regexp | shuf -n1)
-	fi
-}
-# First run getFile function
-getFile
+# Exclude current wallpaper file if it hasn't been changed
+if [ ! -N "$fileCurrent" ]; then
+	fileName=$(ls "$dir" | grep -Ei $regexp | grep -v "$fileNameCurrent" | shuf -n1)
+else
+	fileName=$(ls "$dir" | grep -Ei $regexp | shuf -n1)
+fi
 
 # Exit if directory is empty
 if [ -z "$fileName" ]; then
