@@ -1,22 +1,25 @@
-v-xfce-random-wallpaper
-=======================
+# v-xfce-random-wallpaper
 
-Sets the random wallpaper from a folder
+> Sets the random wallpaper from a folder
 
 ![](preview.gif)
 
 
-Setup
------
+## Setup
+
 Change "dir" variable to your wallpapers directory
 
 
-Cron
-----
+## Cron
+
 Read [CronHowto](https://help.ubuntu.com/community/CronHowto)
-
-	$ crontab -e
-
+```sh
+crontab -e
+```
 For changing wallpaper every day at 13 o'clock:
+```
+0 13 * * * DISPLAY=:0.0 ${HOME}/.local/bin/v-xfce-random-wallpaper.sh
+```
 
-	0 13 * * * DISPLAY=:0.0 ${HOME}/.local/bin/v-xfce-random-wallpaper.sh
+## License
+MIT © [Vladimir Rodkin](https://github.com/VovanR)
