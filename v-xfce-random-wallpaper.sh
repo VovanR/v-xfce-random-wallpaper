@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # v-xfce-random-wallpaper, version 1.0
 # Random wallpaper for XFCE
 # github.com/VovanR/v-xfce-random-wallpaper
